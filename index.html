@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AMG | Legacy Investment Brand</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Montserrat', sans-serif;
+}
+
+body{
+background:#050505;
+color:white;
+overflow-x:hidden;
+}
+
+/* Canvas background */
+#particles{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:-1;
+}
+
+/* Hero */
+.hero{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:20px;
+}
+
+.glow{
+font-size:90px;
+font-weight:700;
+letter-spacing:10px;
+color:gold;
+text-shadow:0 0 20px gold, 0 0 40px rgba(255,215,0,0.3);
+animation:fadeIn 2s ease-in-out;
+}
+
+.subtitle{
+margin-top:20px;
+font-size:20px;
+color:#bbb;
+max-width:600px;
+animation:fadeIn 3s ease-in-out;
+}
+
+.btn{
+margin-top:40px;
+padding:15px 35px;
+background:gold;
+border:none;
+color:black;
+font-weight:bold;
+cursor:pointer;
+border-radius:30px;
+transition:0.3s;
+box-shadow:0 0 20px rgba(255,215,0,0.4);
+}
+
+.btn:hover{
+transform:scale(1.1);
+box-shadow:0 0 40px gold;
+}
+
+/* Sections */
+section{
+padding:100px 20px;
+text-align:center;
+}
+
+h2{
+font-size:40px;
+margin-bottom:20px;
+color:gold;
+}
+
+.card{
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,215,0,0.2);
+padding:30px;
+margin:20px auto;
+max-width:700px;
+border-radius:15px;
+backdrop-filter: blur(10px);
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-10px);
+border-color:gold;
+}
+
+/* Animations */
+@keyframes fadeIn{
+from{opacity:0; transform:translateY(30px);}
+to{opacity:1; transform:translateY(0);}
+}
+
+footer{
+padding:40px;
+text-align:center;
+color:#666;
+}
+
+</style>
+</head>
+
+<body>
+
+<canvas id="particles"></canvas>
+
+<div class="hero">
+    <div class="glow">AMG</div>
+    <div class="subtitle">
+        A global vision of wealth, power, discipline and legacy.
+        Building the future through investment, real estate and mindset.
+    </div>
+    <button class="btn">Enter the Legacy</button>
+</div>
+
+<section>
+    <h2>Vision</h2>
+    <div class="card">
+        AMG is not just a brand — it is a long-term system for building wealth,
+        influence, and generational legacy.
+    </div>
+</section>
+
+<section>
+    <h2>Core Pillars</h2>
+    <div class="card">Investment Strategy & Capital Growth</div>
+    <div class="card">Real Estate Mega Projects</div>
+    <div class="card">Personal Brand Expansion</div>
+    <div class="card">Global Business Systems</div>
+</section>
+
+<section>
+    <h2>Mindset</h2>
+    <div class="card">
+        Discipline. Vision. Execution. AMG is built on action, not motivation.
+    </div>
+</section>
+
+<footer>
+© 2026 AMG | Built for Legacy
+</footer>
+
+<script>
+// Particle background
+const canvas = document.getElementById("particles");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let particlesArray = [];
+
+class Particle {
+    constructor(){
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.size = Math.random() * 2;
+        this.speedX = Math.random() * 0.5 - 0.25;
+        this.speedY = Math.random() * 0.5 - 0.25;
+    }
+    update(){
+        this.x += this.speedX;
+        this.y += this.speedY;
+        if(this.x < 0) this.x = canvas.width;
+        if(this.y < 0) this.y = canvas.height;
+        if(this.x > canvas.width) this.x = 0;
+        if(this.y > canvas.height) this.y = 0;
+    }
+    draw(){
+        ctx.fillStyle = "gold";
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+    }
+}
+
+function init(){
+    for(let i=0;i<120;i++){
+        particlesArray.push(new Particle());
+    }
+}
+
+function animate(){
+    ctx.fillStyle = "#050505";
+    ctx.fillRect(0,0,canvas.width,canvas.height);
+    for(let i=0;i<particlesArray.length;i++){
+        particlesArray[i].update();
+        particlesArray[i].draw();
+    }
+    requestAnimationFrame(animate);
+}
+
+init();
+animate();
+</script>
+
+</body>
+</html>
+<button onclick="alert('AMG')">Click</button>
+<section>
+    <h2>Contact AMG</h2>
+
+    <input type="text" placeholder="Your Name" style="padding:10px; margin:5px;"><br>
+    <input type="email" placeholder="Email" style="padding:10px; margin:5px;"><br>
+
+    <button class="btn">Submit</button>
+</section>
